@@ -1,0 +1,53 @@
+.general-fix{
+    text-align: center;
+    border: 15px;
+    margin: 2%;
+    padding: 0px 20px 0px 20px;    
+    font-family:Arial, Helvetica, sans-serif
+}
+
+.general-fix p{
+    font-size: 55px;
+    font-weight: bold;
+}
+
+.general-fix input{
+    width: 12%;
+}
+
+.general-fix button{
+    color: white;
+    background-color: #008CBA;
+    border-radius: 8px;
+    border: none;
+}
+
+.general-fix button:hover{
+    opacity: 70%;
+}
+
+#Load-button{
+    display: none;
+}
+.flex-container{
+    display: flex;
+}
+.displayImages{
+    width: 30%;
+    margin: 5px 2px 5px 2px;
+    padding-bottom: auto;
+}
+.displayImages:hover{
+  opacity: .5;
+  position: relative;
+  width: 33%;
+  border-radius: 100%;
+  border: 10px;
+  border: #008CBA solid;
+  transform: scale(1.03);
+  text-align: center;
+}
+#lastelement{
+    float: right;
+    width: 265px;
+}
