@@ -34,12 +34,7 @@ async function handleFormSubmit(event){
     //get the user's input
     wordSearch = event.target[0].value;
 
-    //make the apiurl
-    const URL = `http://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${wordSearch}&limit=${LIMIT}&rating=${RATING}&offset=${offset}`;
-    let result = await fetch(URL);
-    jsonResult = await result.json();
-
-    displayResults(jsonResult.data);
+    displayResults(await getResults());
 
     //clear the input textbox 
     input.value = '';
@@ -66,10 +61,22 @@ function displayResults(imagesArray){
 async function getMore(event){
     offset += LIMIT;
 
-    //make the apiurl
+    //get the results from the api call and load more
+    displayResults(await getResults());
+}
+
+async function getResults(){
     const URL = `http://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${wordSearch}&limit=${LIMIT}&rating=${RATING}&offset=${offset}`;
     let result = await fetch(URL);
-    jsonResult = await result.json();
-
-    displayResults(jsonResult.data);
+    let jsonResult1 = await result.json();
+    return jsonResult1.data;
 }
+
+window.onload = async function () {
+    // execute your functions here to make sure they run as soon as the page loads
+    const randoms = ["anime", "cars", "party", "college", "travel", "animals", "fitness", "software", "extreme sports", "outdoor games", "outdoors", "movies", "video games"]
+    wordSearch = randoms[Math.floor(Math.random() * 13)];
+    displayResults(await getResults());
+
+    loadbutton.style.display = 'none';
+  }
